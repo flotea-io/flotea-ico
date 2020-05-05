@@ -1,0 +1,1 @@
+<h2>Wiadomość została wysłana</h2>

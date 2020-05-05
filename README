@@ -1,0 +1,9 @@
+Compile TS
+npm run build -- --watch
+
+Run serwer 
+bee run
+
+Regenerate ICO ABI
+solc --abi FloteaICO.sol -o build
+abigen --abi=build/FloteaICO.abi --pkg=floico --out=Floico.go
