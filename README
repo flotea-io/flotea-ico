@@ -1,0 +1,58 @@
+Compile TS
+npm run build -- --watch
+
+Run serwer 
+bee run
+
+Regenerate ICO ABI
+solc --abi FloteaICO.sol -o build
+abigen --abi=build/FloteaICO.abi --pkg=floico --out=Floico.go
+
+https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a
+
+
+<div id="team" class="container">
+	<span>OUR TEAM</span>
+	<h2>Meet the team</h2>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam commodo dui eget wisi. Nam quis nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Nulla pulvinar eleifend sem. Praesent in mauris eu tortor porttitor accumsan. Aliquam erat volutpat.</p>
+
+	<div class="team center-block">
+		<div>
+			<img src="/static/img/273x273px_team.jpg">
+			<div>
+				<h5>Satoshi Nakamoto</h5>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam commodo dui eget wisi. Nam quis nulla.</p>
+				<a href="https://www.linkedin.com/">
+				</a>
+			</div>
+		</div>
+		<div class="reverse">
+			<div>
+				<h5>Satoshi Nakamoto</h5>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam commodo dui eget wisi. Nam quis nulla.</p>
+				<a href="https://www.linkedin.com/">
+				</a>
+			</div>
+			<img src="/static/img/273x273px_team.jpg">
+		</div>
+		<div>
+			<img src="/static/img/273x273px_team.jpg">
+			<div>
+				<h5>Satoshi Nakamoto</h5>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam commodo dui eget wisi. Nam quis nulla.</p>
+				<a href="https://www.linkedin.com/">
+				</a>
+			</div>
+		</div>
+		<div class="reverse">
+			<div>
+				<h5>Satoshi Nakamoto</h5>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam commodo dui eget wisi. Nam quis nulla.</p>
+				<a href="https://www.linkedin.com/">
+				</a>
+			</div>
+			<img src="/static/img/273x273px_team.jpg">
+		</div>
+	</div>
+
+</div>

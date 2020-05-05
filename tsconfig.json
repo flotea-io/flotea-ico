@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+      "outDir": "./built/",
+      "sourceMap": true,
+      "strict": true,
+      "strictNullChecks": false,
+      "noImplicitReturns": true,
+      "noImplicitAny": true,
+      "module": "es2015",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "target": "es5",
+      "lib": [
+        "es2016",
+        "dom"
+      ]
+  },
+  "include": [
+      "./src/**/*"
+  ]
+}
