@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Vue from "vue";
 import moment from 'moment';
 import Blockchain from './components/blockchain';
@@ -51,7 +57,7 @@ class Voting {
             watch: {
                 actionType: function () {
                     switch(this.actionType){
-                        case 0: 
+                        case 0:
                         this.amount = 0;
                         break;
                         case 1:
@@ -73,7 +79,7 @@ class Voting {
                 },
                 createProposal: function(){
                     voting.blockchain.sendContract("FloteaICO","createProposal", { "from": this.metamaskState.userAddress },
-                        (err: any) => this.resolveError(err.message), 
+                        (err: any) => this.resolveError(err.message),
                         voting.blockchain.toHex(this.description),
                         this.durationHours,
                         this.actionType,
@@ -83,15 +89,15 @@ class Voting {
                         );
                 },
                 vote: function(type: number){
-                    voting.blockchain.sendContract("FloteaICO", "voteInProposal", { "from": this.userAddress }, 
+                    voting.blockchain.sendContract("FloteaICO", "voteInProposal", { "from": this.userAddress },
                         (err: any) => this.resolveError(err.message),
                         this.selectedProposal.index,
-                        type, 
+                        type,
                         );
                 },
                 finish: function() {
                     voting.blockchain.sendContract("FloteaICO", "finishProposal", { "from": this.userAddress },
-                        (err: any) => this.resolveError(err.message), 
+                        (err: any) => this.resolveError(err.message),
                         this.selectedProposal.index
                         );
                 },
@@ -131,9 +137,9 @@ class Voting {
         this.loadProposals();
         contract.events.allEvents(null, (a:any,b:any)=>{
             console.log(a,b);
-            if(a != false) return; 
+            if(a != false) return;
             switch(b.event){
-                case "ProposalCreated": 
+                case "ProposalCreated":
                 $.jGrowl("Proposal created", { header: 'Success', life: 20000 });
                 sharedData.proposals = [{
                     description: this.blockchain.toHex(b.returnValues.description),
@@ -155,7 +161,7 @@ class Voting {
                 case "Vote":
                 $.jGrowl("Somebody "+
                     (b.returnValues.vote == 0? "voted No" : (b.returnValues.vote==1? "voted Yes" : "Resignated")) +
-                    " in proposal: '" + 
+                    " in proposal: '" +
                     this.blockchain.toHex(b.returnValues.description) +
                     "' from address: " +
                     b.returnValues.addr, { header: 'Success', life: 20000 });
@@ -166,9 +172,9 @@ class Voting {
                 case "FinishVoting":
                 let index = b.returnValues.proposalIndex;
                 let result = b.returnValues.result? 1:0;
-                $.jGrowl("Voting '"+ 
+                $.jGrowl("Voting '"+
                     this.blockchain.toHex(b.returnValues.description) +
-                    "' finished " 
+                    "' finished "
                     , { header: 'Success', life: 20000 });
                 if(sharedData.selectedProposal.index == index){
                     sharedData.selectedProposal.result = result;

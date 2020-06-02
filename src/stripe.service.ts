@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import axios from 'axios';
 declare var jGrowl: any;
 declare var $: any;
@@ -40,7 +46,7 @@ export default class StripeService {
 			if(this.main.customerAddress == "")
 				this.main.customerAddress = "0x";
 			$.jGrowl("Please fill your ETH address", { header: 'Error', life: 20000 });
-		} 
+		}
 		else {
 			this.stripe.createToken(this.card).then((result: any) => {
 				if (result.error) {

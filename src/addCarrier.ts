@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Vue from "vue";
 declare var jGrowl: any;
 declare var $: any;
@@ -72,7 +78,7 @@ class AddCarrier {
 	}
 
 	submit(){
-		this.blockchain.callContract("VotingCarrier", "beforeCreateCarrierProposal", 
+		this.blockchain.callContract("VotingCarrier", "beforeCreateCarrierProposal",
 			(error: any) => {
 				if(error[0]){
 					sharedData.errorText = error[1];
@@ -94,7 +100,7 @@ class AddCarrier {
 			);
 	}
 
-	
+
 }
 
 $(document).ready(()=>{

@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Web3 from 'web3';
 import Vue from "vue";
 declare var web3: any;
@@ -20,7 +26,7 @@ class Carriers {
 	constructor(){
 		this.blockchain = new Blockchain(true);
 		this.blockchain.loadContract("Carriers", (contract: any) => {
-			contract.events.allEvents({},(error: boolean, event: any)=>{ 
+			contract.events.allEvents({},(error: boolean, event: any)=>{
 				if(typeof event.returnValues != "undefined")
 					this.resolveEvent(event);
 			});
@@ -85,13 +91,13 @@ class Carriers {
 					web: this.blockchain.fromHex(response.web),
 					index: index,
 					enabled: response.enabled
-				};	
+				};
 
 				if(toUp)
 					sharedData.carriers.unshift(data);
 				else
 					sharedData.carriers.push(data);
-				
+
 			this.loadCarriers(index-1, max-1, false);
 		}, null, index);
 	}

@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Vue from "vue";
 import Web3 from 'web3';
 declare var web3: any;
@@ -55,7 +61,7 @@ export default class Blockchain {
 			},
 			mounted() {
 				bl.initWebsocketProvider();
-				bl.mainInit();			
+				bl.mainInit();
 				this.$emit('getObject', bl);
 			},
 			data: function(){
@@ -77,20 +83,20 @@ export default class Blockchain {
 			},
 			watch:{
 				metamaskState: function(newState){
-					this.$emit('metamaskUpdated', newState);	
+					this.$emit('metamaskUpdated', newState);
 				}
 			},
 
 			template: '<popper> <div class="popper"> <h3 v-if="carrierName!=\'\'">{{carrierName}}</h3> <div>{{eth.toFixed(4)}} ETH </div> <div> {{flt.toFixed(2)}} FLT </div> {{userAddress}} </div> <div slot="reference" class="metamask" @click="enableMetamask"> <img v-if="!enabledMetamask" src="/static/img/metamask-logo-92-a-73-d-44-kopia@3x.png" /> <img src="/static/img/user-solid.svg" class="user-icon" v-if="enabledMetamask" /> <span>{{enabledMetamask? "Połączony":"Odblokuj Metamask"}}</span> <span v-if="enabledMetamask">{{userType==0? "pasażer": "przewoźnik"}}</span> </div> </popper>',
 			methods:{
-				enableMetamask: function(){ 
+				enableMetamask: function(){
 					if(!this.isMetamask){
 						let link = "https://metamask.io/";
-						if(navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf('OPR') != -1) 
+						if(navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf('OPR') != -1)
 							link = "https://addons.opera.com/en/extensions/details/metamask/";
 						else if(navigator.userAgent.indexOf("Chrome") != -1 ) // Chrome and Brave have same addon
 							link = "https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn";
-						else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
+						else if(navigator.userAgent.indexOf("Firefox") != -1 )
 							link = "https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/";
 						window.open(link, '_blank');
 					}
@@ -143,7 +149,7 @@ export default class Blockchain {
 				blockchainSharedData.carrierName = "";
 				blockchainSharedData.carrierWeb = "";
 				blockchainSharedData.userType = 0;
-			} 
+			}
 		}, null, blockchainSharedData.userAddress);
 		this.callContract("FloteaToken", "balanceOf", (balance: number)=>{
 			blockchainSharedData.flt = balance/100;

@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Vue from "vue";
 import Web3 from 'web3';
 import * as _ from "lodash";
@@ -71,9 +77,9 @@ let v = new Vue({
                 newPln = newPln.replace(',','.');
             let val = parseFloat(newPln);
             if(isNaN(val) || val <= 0) return;
-            
+
             this.statusAmount = NaN;
-            
+
             val *= 1 / this.ethPrice;
             this.ethInput = val.toString();
         },
@@ -104,14 +110,14 @@ let v = new Vue({
           .then((response: any) => {
             if(response.data.error)
                 $.jGrowl(response.data.data, { header: 'Error', life: 20000 });
-            else 
+            else
                 this.actualPrice = response.data.data/ 10**18;
         });
           icoService.getAddress()
           .then((response: any) => {
             if(response.data.error)
                 $.jGrowl(response.data.data, { header: 'Error', life: 20000 });
-            else 
+            else
                 this.address = response.data.data;
         });
           icoService.getEthPrice()
@@ -123,7 +129,7 @@ let v = new Vue({
                 this.plnInput = "1";
             }
         });
-          
+
       },
       getAmount: function () {
         let val = parseFloat(this.ethInput);
@@ -145,7 +151,7 @@ let v = new Vue({
             else{
                 this.customerValid = response.data.valid;
                 if(this.customerValid){
-                    this.customerTokens = response.data.amount; 
+                    this.customerTokens = response.data.amount;
                 }
             }
         });

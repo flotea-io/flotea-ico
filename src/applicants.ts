@@ -1,3 +1,9 @@
+/*
+* Project: FLOTEA - Decentralized passenger transport system
+* Copyright (c) 2020 Flotea, All Rights Reserved
+* For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 import Vue from "vue";
 declare var jGrowl: any;
 declare var $: any;
@@ -27,7 +33,7 @@ class Applicants {
 	constructor(){
 		this.blockchain = new Blockchain(false);
 		this.blockchain.loadContract("VotingCarrier", (contract: any) => {
-			contract.events.allEvents({},(error: boolean, event: any)=>{ 
+			contract.events.allEvents({},(error: boolean, event: any)=>{
 				if(typeof event.returnValues != "undefined")
 					this.resolveEvent(event);
 			});
@@ -201,13 +207,13 @@ class Applicants {
 					result: response.result,
 					tx: "",
 					showVoteButtons: false,
-				};	
+				};
 
 				if(toUp)
 					sharedData.applicants.unshift(data);
 				else
 					sharedData.applicants.push(data);
-				
+
 			}, null, index);
 			this.loadAplicants(index-1, max-1, toUp);
 		}, null, index);
